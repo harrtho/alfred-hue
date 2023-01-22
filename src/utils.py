@@ -62,6 +62,9 @@ def create_light_icon(lid, light_data):
         rgb_value = tuple([255 * x for x in rgb_value])
     else:
         rgb_value = (255, 255, 255) if light_data['state']['on'] else (0, 0, 0)
+    
+    # Make sure 'rgb_value' consists of integers
+    rgb_value = tuple([int(i) for i in list(rgb_value)])
 
     f = open('icons/%s.png' % lid, 'wb')
     w = png.Writer(1, 1, greyscale=False)
